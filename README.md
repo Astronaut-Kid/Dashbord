@@ -13,12 +13,14 @@ d’articles de recherche biomédicale. L’exploitation de cette source me perm
 publications scientifiques de qualité, essentielles pour mener une analyse rigoureuse et fondée sur
 des preuves.
 
+
 ## Méthodologie de collecte
 
 L'extraction des articles sera réalisée via du **web scraping** en raison des limitations
 imposées par l’API PubMed. 
 
 Le fichier python **scraping.ipynb** contiendra le script pour l'automatisation de l'extraction des articles scientifiques, en utilisant les bibliothèques **BeautifulSoup** et **Requests**. 
+
 
 ### Définition des critères de recherche
 Nous avons ciblé les articles contenant des mots-clés liés au sommeil et à certaines maladies dans leur titre, résumé ou mots-clés. 
@@ -32,31 +34,47 @@ de 2013 à 2025 pour la maladie d’Alzheimer.
 
 Pour le reste des maladies il a suffit de remplacer la partie de l’équation concernant la
 maladie par des mots-clés suivants :
+
 **● Obésité : Obesity**
+
 **● Cancer : ("Cancer" OR "tumor" OR "carcinoma")**
+
 **● Hypertension Arterielle : ("hypertension" OR "high blood pressure" OR "arterial hypertension")**
+
 **● Diabete : ("Diabetes" OR "Type 2 Diabetes" OR "T2D")** 
+
 
 Notons que pour le diabète, nous avons précisé le type 2 car le diabète de type 1 peut parfois
 être présent dès la naissance. 
 
-**Scraping des pages de résultats**
+
+**Extraction des résultats**
+
 **● PubMed affiche 10 articles par page et impose une limite de 10 000 articles par recherche**
-**● Pour contourner cette contrainte, nous avons découpé la collecte par intervalles de pages, en ajustant dynamiquement les requêtes pour récupérer le maximum d’articles.** 
+
+**● Pour contourner cette contrainte, nous avons découpé la collecte par intervalles de pages, en ajustant les requêtes pour récupérer le maximum d’articles.** 
+
 
 ### Filtrage des articles par date 
 
-**● Nous avons observé un nombre très limité d’articles avant 2013, ce qui aurait pu biaiser notre analyse.**
+**● Nous avons observé un nombre très limité d’articles avant 2013**
+
 **● Par conséquent, nous avons restreint notre collecte aux articles publiés à partir de 2013 pour garantir un corpus suffisamment représentatif.** 
 
 ### Extraction des métadonnées : Pour chaque article, nous avons récupéré 
 
-**● Titre**
+**● Titre** 
+
 **● Lien**
+
 **● Résumé**
+
 **● Auteurs (nom, affiliation)**
+
 **● Année de publication**
+
 **● Mots-clés (extraits lorsqu’ils étaient disponibles)**
+
 
 ## Stockage des données :  
 
